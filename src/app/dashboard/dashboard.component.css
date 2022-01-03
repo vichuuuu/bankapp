@@ -2,3 +2,7 @@ p{
     color: chartreuse;
     text-align: center;
 }
+
+.error{
+    color: white;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -16,10 +16,15 @@ uname=""
 
 // group creation
 registerForm=this.fb.group({
-  uname:[''],
-  acno:[''],
-  pswd:['']
+  uname:['',[Validators.required,Validators.pattern("[a-zA-Z ]*")]],
+  acno:['',[Validators.required,Validators.pattern("[0-9]*")]],
+  pswd:['',[Validators.required,Validators.pattern("[a-zA-Z0-9]*")]]
 })
+// registerForm=this.fb.group({
+//   uname:[''],
+//   acno:[''],
+//   pswd:['']
+// })
 
 
   constructor(private ds:DataService,private router:Router,private fb:FormBuilder) { }
@@ -33,6 +38,7 @@ register(){
 
 
 //  use reactive  forms
+if(this.registerForm.valid){
   var uname=this.registerForm.value.uname
   var acno=this.registerForm.value.acno
   var pswd=this.registerForm.value.pswd
@@ -48,5 +54,9 @@ register(){
   else{
     alert("Account already exist")
   }
+}else{
+  alert("invalid form..")
+}
+  
 }
 }

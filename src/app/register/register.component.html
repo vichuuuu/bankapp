@@ -29,7 +29,11 @@
                           <!-- reactive forms -->
                           <input type="text" class="form-control" name="acno" formControlName="acno" placeholder="acc number please"  id="login_accno" required>
                         </div>
-                      <div class="input-group form-group">
+
+                        <div class="error" *ngIf="(this.registerForm.get('acno')?.touched||this.registerForm.get('acno')?.dirty)&& this.registerForm.get('acno')?.errors">invalid acc number</div>    
+                      
+                      
+                        <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
@@ -41,6 +45,10 @@
                         <input type="text" class="form-control" name="uname"  formControlName="uname" placeholder="username please"  id="login_uname" required>
                    
                     </div>
+
+
+                <div class="error" *ngIf="(this.registerForm.get('uname')?.touched||this.registerForm.get('uname')?.dirty)&& this.registerForm.get('uname')?.errors">invalid username</div>    
+
                       <div class="input-group form-group">
                           <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -48,6 +56,10 @@
                           
                             <input type="password" class="form-control" name="pswd"   formControlName="pswd" placeholder="password" id="login_password" required> 
                       </div>
+
+                      <div class="error" *ngIf="(this.registerForm.get('pswd')?.touched||this.registerForm.get('pswd')?.dirty)&& this.registerForm.get('pswd')?.errors">invalid password</div>
+
+                      
                       
                       <div class="form-group">
                           <!-- <input type="submit" value="Login"  (click)="login()" class="btn float-right login_btn " style="width:50%" > -->
